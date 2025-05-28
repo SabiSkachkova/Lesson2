@@ -1,197 +1,147 @@
 package org.example;
 
-public class Task {
+class Animal {
+    private static int count = 0;
 
-    public static void printThreeWords() {
-        System.out.println("Orange");
-        System.out.println("Banana");
-        System.out.println("Apple");
+    public Animal() {
+        count++;
     }
 
-    public static void checkSumSign() {
-        int a = 19;
-        int b = 8;
-        int sum = a + b;
-        if (sum >= 0) {
-            System.out.println("Сумма положительная");
+    public static int getCount() {
+        return count;
+    }
+
+    public void run(int distance) {
+        System.out.println("Животное пробежало " + distance + " м.");
+    }
+
+    public void swim(int distance) {
+        System.out.println("Животное проплыло " + distance + " м.");
+    }
+}
+class Dog extends Animal {
+    private static int dogCount = 0;
+
+    public Dog() {
+        super();
+        dogCount++;
+    }
+
+    public static int getDogCount() {
+        return dogCount;
+    }
+
+    public void run(int distance) {
+        if (distance <= 500) {
+            System.out.println("Собака пробежала " + distance + " м.");
         } else {
-            System.out.println("Сумма отрицательная");
+            System.out.println("Собака не может пробежать больше 500 м.");
         }
     }
 
-    public static void printColor() {
-        int value = 19;
-        if (value <= 0) {
-            System.out.println("Красный");
-        } else if (value > 0 && value <= 100) {
-            System.out.println("Желтый");
+    public void swim(int distance) {
+        if (distance <= 10) {
+            System.out.println("Собака проплыла " + distance + " м.");
         } else {
-            System.out.println("Зеленый");
+            System.out.println("Собака не может проплыть больше 10 м.");
         }
     }
+}
 
-    public static void compareNumbers() {
-        int a = 19;
-        int b = 8;
-        if (a >= b) {
-            System.out.println("a >= b");
+class Cat extends Animal {
+    private static int catCount = 0;
+    private boolean isFull = false;
+
+    public Cat() {
+        super();
+        catCount++;
+    }
+
+    public static int getCatCount() {
+        return catCount;
+    }
+
+    public void run(int distance) {
+        if (distance <= 200) {
+            System.out.println("Кот пробежал " + distance + " м.");
         } else {
-            System.out.println("a < b");
+            System.out.println("Кот не может пробежать больше 200 м.");
         }
     }
 
-    public static void checkSumInRange() {
-        System.out.println(checkSumInRange(18, 1));
-        System.out.println(checkSumInRange(1, 19));
-        System.out.println(checkSumInRange(20, 1));
+    public void swim(int distance) {
+        System.out.println("Кот не умеет плавать.");
     }
 
-    public static boolean checkSumInRange(int a, int b) {
-        int sum = a + b;
-        return sum >= 10 && sum <= 20;
-    }
-
-    public static void printNumberSign() {
-        printNumberSign(19);
-        printNumberSign(0);
-        printNumberSign(-8);
-    }
-
-    public static void printNumberSign(int number) {
-        if (number >= 0) {
-            System.out.println("Положительное");
+    public void eat(FoodBowl bowl) {
+        if (bowl.getFoodAmount() > 0) {
+            bowl.decreaseFood(1);
+            isFull = true;
+            System.out.println("Кот покушал и теперь сыт.");
         } else {
-            System.out.println("Отрицательное");
+            System.out.println("В миске недостаточно еды, кот не покушает.");
         }
     }
 
-    public static void isNegative() {
-        System.out.println(isNegative(1));
-        System.out.println(isNegative(0));
-        System.out.println(isNegative(-1));
+    public boolean isFull() {
+        return isFull;
+    }
+}
+
+class FoodBowl {
+    private int foodAmount;
+
+    public FoodBowl(int initialFood) {
+        this.foodAmount = initialFood >= 0 ? initialFood : 0;
     }
 
-    public static boolean isNegative(int number) {
-        return number < 0;
+    public int getFoodAmount() {
+        return foodAmount;
     }
 
-    public static void printStringMultipleTimes() {
-        printStringMultipleTimes("Солнце восходит на востоке", 3);
-        printStringMultipleTimes("Лес растворился в темноте", 2);
-    }
-
-    public static void printStringMultipleTimes(String str, int count) {
-        for (int i = 0; i < count; i++) {
-            System.out.println(str);
+    public void decreaseFood(int amount) {
+        if (amount <= foodAmount) {
+            foodAmount -= amount;
+        } else {
+            System.out.println("Недостаточно еды в миске.");
         }
     }
 
-    public static void isLeapYear()  {
-        System.out.println(isLeapYear(2025));
-        System.out.println(isLeapYear(1998));
-        System.out.println(isLeapYear(2000));
-        System.out.println(isLeapYear(1600));
-    }
-
-    public static boolean isLeapYear(int year) {
-        return (year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0));
-    }
-
-    public static void printArrayOne() {
-        int[] arrayOne = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
-        System.out.println("Исходный массив:");
-        printArrayOne(arrayOne);
-        for (int i = 0; i < arrayOne.length; i++) {
-            if (arrayOne[i] == 0) {
-                arrayOne[i] = 1;
-            } else {
-                arrayOne[i] = 0;
-            }
-        }
-        System.out.println("Измененный массив:");
-        printArrayOne(arrayOne);
-    }
-
-    public static void printArrayOne(int[] arrayOne) {
-        for (int num : arrayOne) {
-            System.out.print(num + " ");
-        }
-        System.out.println();
-    }
-
-    public static void printArrayTwo()  {
-        int[] arrayTwo = new int[100];
-        for (int i = 0; i < arrayTwo.length; i++) {
-            arrayTwo[i] = i + 1;
-        }
-        System.out.println("Заполненный массив:");
-        printArrayTwo(arrayTwo);
-    }
-
-    public static void printArrayTwo(int[] arrayTwo) {
-        for (int num : arrayTwo) {
-            System.out.print(num + " ");
-        }
-        System.out.println();
-    }
-
-    public static void printArrayThree()  {
-        int[] arrayThree = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
-        for (int i = 0; i < arrayThree.length; i++) {
-            if (arrayThree[i] < 6) {
-                arrayThree[i] *= 2;
-            }
-        }
-        System.out.println("Измененный массив:");
-        printArrayThree(arrayThree);
-    }
-
-    public static void printArrayThree(int[] arrayThree) {
-        for (int num : arrayThree) {
-            System.out.print(num + " ");
-        }
-        System.out.println();
-    }
-
-    public static void printArrayFour() {
-        int size = 5;
-        int[][] arrayFour = new int[size][size];
-        for (int i = 0; i < size; i++) {
-            arrayFour[i][i] = 1;
-        }
-        System.out.println("Квадратный двумерный массив с единицами на главной диагонали:");
-        printArrayFour(arrayFour);
-    }
-
-    public static void printArrayFour(int[][] arrayFour) {
-        for (int[] row : arrayFour) {
-            for (int num : row) {
-                System.out.print(num + " ");
-            }
-            System.out.println();
+    public void addFood(int amount) {
+        if (amount > 0) {
+            foodAmount += amount;
+            System.out.println("Добавлено " + amount + " еды в миску.");
         }
     }
+}
+class Execution {
+    public static void execution() {
 
-    public static void printArrayFive() {
-        int len = 8;
-        int initialValue = 19;
-        int[] resultArray = createArray(len, initialValue);
-        System.out.println("Созданный массив:");
-        printArrayFive(resultArray);
-    }
+        Cat[] cats = new Cat[3];
+        cats[0] = new Cat();
+        cats[1] = new Cat();
+        cats[2] = new Cat();
 
-    public static int[] createArray(int len, int initialValue) {
-        int[] array = new int[len];
-        for (int i = 0; i < len; i++) {
-            array[i] = initialValue;
+        FoodBowl foodBowl = new FoodBowl(5);
+
+        for (Cat cat : cats) {
+            cat.eat(foodBowl);
         }
-        return array;
-    }
 
-    public static void printArrayFive(int[] arrayFive) {
-        for (int num : arrayFive) {
-            System.out.print(num + " ");
+        for (int i = 0; i < cats.length; i++) {
+            System.out.println("Кот " + (i + 1) + " сыт: " + cats[i].isFull());
         }
-        System.out.println();
+
+        Dog dog1 = new Dog();
+        Dog dog2 = new Dog();
+
+        dog1.run(150);
+        dog1.swim(5);
+        dog2.run(600);
+        dog2.swim(15);
+
+        System.out.println("Всего животных: " + Animal.getCount());
+        System.out.println("Всего собак: " + Dog.getDogCount());
+        System.out.println("Всего котов: " + Cat.getCatCount());
     }
 }
