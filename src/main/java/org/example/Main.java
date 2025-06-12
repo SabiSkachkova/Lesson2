@@ -7,19 +7,5 @@ import static org.example.Task.*;
 public class Main {
     public static void main(String[] args) {
 
-        printThreeWords();
-        checkSumSign();
-        printColor();
-        compareNumbers();
-        checkSumInRange();
-        printNumberSign();
-        isNegative();
-        printStringMultipleTimes();
-        isLeapYear();
-        printArrayOne();
-        printArrayTwo();
-        printArrayThree();
-        printArrayFour();
-        printArrayFive();
     }
 }
