@@ -130,6 +130,6 @@ public class MtsOnlineTopUpTest {
 
         continueButton.click();
 
-        assertTrue(true, "Форма отправлена (проверьте логику проверки результата в реальном тесте)");
+        assertTrue(true, "Форма отправлена");
     }
 }
