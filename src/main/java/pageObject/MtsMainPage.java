@@ -37,7 +37,7 @@ public class MtsMainPage {
     }
 
     public WebElement getFormById(String formId) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(formId)));
+        return wait.until(ExpectedConditions.presenceOfElementLocated(By.id(formId)));
     }
 
     public WebElement getInputById(WebElement form, String inputId) {

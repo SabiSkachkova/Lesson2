@@ -122,7 +122,7 @@ public class MtsTest {
         assertEquals("Номер карты", iframePage.getPlaceholderByLabel("Номер карты"));
         assertEquals("Срок действия", iframePage.getPlaceholderByLabel("Срок действия"));
         assertEquals("CVC", iframePage.getPlaceholderByLabel("CVC"));
-        assertEquals("Имя и фамилия", iframePage.getPlaceholderByLabel("Имя и фамилия"));
+        assertEquals("Имя и фамилия на карте", iframePage.getPlaceholderByLabel("Имя и фамилия"));
 
         assertFalse(iframePage.getPaymentLogos().isEmpty());
 

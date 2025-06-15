@@ -37,7 +37,7 @@ public class PaymentIframePage {
 
     public String getPlaceholderByLabel(String labelText) {
         WebElement label = driver.findElement(By.xpath("//label[contains(text(), '" + labelText + "')]"));
-        return label.getAttribute("placeholder");
+        return label.getText();
     }
 
     public List<WebElement> getPaymentLogos() {
